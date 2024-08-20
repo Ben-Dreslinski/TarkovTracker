@@ -39,7 +39,26 @@
                 </template>
               </v-switch>
 
-              <v-text-field v-if="!survived"
+              <transition name="expand-fade" mode="out-in">
+                <v-text-field v-if="!survived"
+                  label="Killer"
+                  filled
+                  clearable
+                  v-model="killer"
+                  :rules="stringRules"/>
+              </transition>
+
+              <transition name="expand-fade" mode="out-in">
+                <v-autocomplete v-if="!survived"
+                  label="Death Limb"
+                  filled
+                  required
+                  clearable
+                  v-model="selectedLimb"
+                  :rules="[v => !!(v && v.length) || 'Item is required']"
+                  :items="deathLimbs"/>
+              </transition>
+              <!-- <v-text-field v-if="!survived"
                 label="Killer"
                 filled
                 clearable
@@ -53,7 +72,7 @@
                 clearable
                 v-model="selectedLimb"
                 :rules="[v => !!(v && v.length) || 'Item is required']"
-                :items="deathLimbs"/>
+                :items="deathLimbs"/> -->
 
               <v-text-field
                 v-model="time"
@@ -96,7 +115,10 @@
                   <v-card-text style="max-height: 400px; overflow-y: auto;">
                     <transition-group name="fade" tag="div">
                       <v-row v-for="(pmcKill, index) in pmcKills" :key="index" dense>
-                        <v-col cols="12" sm="6">
+                        <v-col cols="auto" class="d-flex align-center justify-end" style="padding-right: 4px;">
+                          <span :style="{ fontWeight: 'bold', fontSize: '16px', lineHeight: '36px' }">{{ index + 1 }}.</span>
+                        </v-col>
+                        <v-col cols="11" sm="6">
                           <v-text-field
                             v-model="pmcKills[index]"
                             label="Player Name"
