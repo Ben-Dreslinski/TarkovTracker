@@ -5,7 +5,7 @@ class BaseApi {
   private readonly baseURL: string;
 
   constructor() {
-    this.baseURL = 'http://3.12.108.4';
+    this.baseURL = 'https://tarkov.wpgtracker.top';
     this.axiosInstance = axios.create({
       baseURL: this.baseURL,
       headers: {
