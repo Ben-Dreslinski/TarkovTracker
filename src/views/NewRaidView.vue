@@ -238,7 +238,7 @@ export default Vue.extend({
       numberRules: [
         value => !!value || 'Required.',
         value => {
-          const pattern = /^(0(\.[0-9]{1,3})?|1(\.0{0,3})?)$/
+          const pattern = /^-?\d+(\.\d{1,3})?$/
           return pattern.test(value) || 'Must be a valid number.'
         }
       ],
