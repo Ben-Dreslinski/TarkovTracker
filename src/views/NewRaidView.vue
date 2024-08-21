@@ -58,21 +58,6 @@
                   :rules="[v => !!(v && v.length) || 'Item is required']"
                   :items="deathLimbs"/>
               </transition>
-              <!-- <v-text-field v-if="!survived"
-                label="Killer"
-                filled
-                clearable
-                v-model="killer"
-                :rules="stringRules"/>
-
-              <v-autocomplete v-if="!survived"
-                label="Death Limb"
-                filled
-                required
-                clearable
-                v-model="selectedLimb"
-                :rules="[v => !!(v && v.length) || 'Item is required']"
-                :items="deathLimbs"/> -->
 
               <v-text-field
                 v-model="time"
@@ -253,7 +238,7 @@ export default Vue.extend({
       numberRules: [
         value => !!value || 'Required.',
         value => {
-          const pattern = /^\d+(\.\d{1,2})?$/
+          const pattern = /^(0(\.[0-9]{1,3})?|1(\.0{0,3})?)$/
           return pattern.test(value) || 'Must be a valid number.'
         }
       ],
@@ -378,7 +363,7 @@ export default Vue.extend({
 }
 
 .v-card-subtitle {
-  color: #616161; /* Subtitle color */
+  color: #616161;
 }
 
 .fade-enter-active, .fade-leave-active {
