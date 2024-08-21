@@ -149,6 +149,13 @@
                 v-model="accuracy"
                 :rules="accuracyRules"/>
 
+              <v-text-field
+                label="Any Other Notes"
+                filled
+                clearable
+                v-model="notes"
+                :rules="optionalStringRules"/>
+
               <v-btn
                 :disabled="!valid"
                 color="success"
@@ -216,7 +223,8 @@ export default Vue.extend({
       kmTraveled: null as number | null,
       accuracy: null as number | null,
       scavKills: null as number | null,
-      killer: "" as string || null,
+      killer: null as string | null,
+      notes: null as string | null,
       deathLimbs: ['Top of head', 'Head eyes', 'Head jaws', 'Head ears', 'Head face',
                   'Head throat', 'Nape', 'Thorax', 'Right arm', 'Left arm', 'Stomach',
                   'Right leg', 'Left leg'
@@ -252,6 +260,9 @@ export default Vue.extend({
       stringRules: [
       value => !!value || 'Required.',
       value => typeof value === 'string' || 'Must be a string.'
+      ],
+      optionalStringRules: [
+        value => (value === null || typeof value === 'string') || 'Must be a string.'
       ]
     }
   },
@@ -330,7 +341,8 @@ export default Vue.extend({
         accuracy: this.accuracy,
         scav_kills: this.scavKills,
         killer: this.killer,
-        death_limb: this.selectedLimb
+        death_limb: this.selectedLimb,
+        notes: this.notes
       };
 
       try {
