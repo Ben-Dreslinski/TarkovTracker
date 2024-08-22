@@ -183,9 +183,22 @@
           <v-card-title class="headline text-center">
             Failed to create raid - please tell ben.
           </v-card-title>
+          <v-card-text>
+            <v-text-field
+              v-model="confirmationText"
+              label="Type 'got it' to close"
+              outlined
+            ></v-text-field>
+          </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="red darken-1" text @click="handleClose">Close</v-btn>
+            <v-btn
+              :disabled="confirmationText.toLowerCase() !== 'got it'"
+              color="red darken-1"
+              text
+              @click="handleClose">
+              Close
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -210,6 +223,7 @@ export default Vue.extend({
       valid: true,
       dialogSuccess: false,
       dialogFailure: false,
+      confirmationText: '',
       selectedName: "" as string,
       players: [] as Player[],
       maps: ['Factory', 'Woods', 'Customs', 'Interchange', 'Reserve', 'Shoreline',
