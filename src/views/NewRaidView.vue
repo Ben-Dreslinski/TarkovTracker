@@ -61,7 +61,7 @@
 
               <v-text-field
                 v-model="time"
-                label="Time"
+                label="Time (MM:SS)"
                 filled
                 required
                 clearable
