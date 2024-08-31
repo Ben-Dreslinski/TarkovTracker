@@ -253,7 +253,7 @@ export default Vue.extend({
       timeRules: [
         value => !!value || 'Required.',
         value => {
-          const pattern = /^\d{1,2}(:|.)[0-5]\d$/
+          const pattern = /^\d{1,2}(:|\.)[0-5]\d$/
           return pattern.test(value) || 'Invalid Timestamp.'
         }
       ],
