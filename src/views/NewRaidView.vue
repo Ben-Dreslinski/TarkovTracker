@@ -144,7 +144,6 @@
               <v-text-field
                 label="Accuracy"
                 filled
-                required
                 clearable
                 v-model="accuracy"
                 :rules="accuracyRules"/>
@@ -265,10 +264,9 @@ export default Vue.extend({
         }
       ],
       accuracyRules: [
-        value => !!value || 'Required.',
         value => {
           const pattern = /^(0(\.[0-9]+)?|1(\.0*)?)$/;
-          return pattern.test(value) || 'Accuracy is between 0 and 1.'
+          return (value === null ) || (pattern.test(value) || 'Accuracy is between 0 and 1.')
         }
       ],
       stringRules: [
