@@ -143,7 +143,7 @@
                 :rules="numberRules"/>
 
               <v-text-field
-                label="Accuracy"
+                label="Accuracy (Blank if didn't shoot)"
                 filled
                 clearable
                 v-model="accuracy"
