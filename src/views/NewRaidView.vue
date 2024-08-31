@@ -15,6 +15,7 @@
                 filled
                 required
                 clearable
+                @blur="setCookie()"
                 :rules="[v => !!(v && v.length) || 'Item is required']"
                 :items="playerNames"/>
 
@@ -312,6 +313,14 @@ export default Vue.extend({
 
   created: async function ()
   {
+    const cookieName = "cookie_player";
+    const val = this.getCookie(cookieName);
+    if (val)
+    {
+      console.log(`setting selectedName = ${val}`);
+      this.selectedName = val;
+    }
+
     const response = await BaseApi.get<Player[]>('/get_players');
     this.players = response.data;
   },
@@ -376,6 +385,32 @@ export default Vue.extend({
     handleClose: function ()
     {
       this.$router.push('/');
+    },
+
+    getCookie: function (name: string)
+    {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2)
+      {
+        return parts.pop()?.split(';').shift();
+      }
+
+      return null;
+    },
+
+    setCookie: function ()
+    {
+      const value = this.selectedName;
+      const cookie = "cookie_player";
+      const expiryDays = 90;
+
+      const date = new Date();
+      date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + date.toUTCString();
+
+     
+      document.cookie = `${cookie}=${value};${expires};path=/`;
     }
   }
 });
