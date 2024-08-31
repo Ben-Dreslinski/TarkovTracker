@@ -16,6 +16,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('../views/NewRaidView.vue')
   },
   {
+    path: '/playerstats',
+    name: 'playerstats',
+    component: () => import('../views/PlayerStats.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
