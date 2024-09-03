@@ -129,10 +129,10 @@
               <v-text-field
                 label="Amount Healed"
                 filled
-                required
                 clearable
+                placeholder="Blank if none"
                 v-model="amountHealed"
-                :rules="numberRules"/>
+                :rules="optionalNumberRules"/>
 
               <v-text-field
                 label="Distance traveled"
@@ -143,9 +143,10 @@
                 :rules="numberRules"/>
 
               <v-text-field
-                label="Accuracy (Blank if didn't shoot)"
+                label="Accuracy"
                 filled
                 clearable
+                placeholder="Blank if none"
                 v-model="accuracy"
                 :rules="accuracyRules"/>
 
@@ -222,7 +223,7 @@ export default Vue.extend({
     return {
       valid: true,
       dialogSuccess: false,
-      dialogFailure: false,
+      dialogFailure: true,
       confirmationText: '',
       selectedName: "" as string,
       players: [] as Player[],
@@ -276,6 +277,13 @@ export default Vue.extend({
       ],
       optionalStringRules: [
         value => (value === null || typeof value === 'string') || 'Must be a string.'
+      ],
+      optionalNumberRules: [
+        value => {
+          if (value === null) return true;
+          const pattern = /^-?\d+(\.\d{1,3})?$/;
+          return pattern.test(value) || 'Must be a valid number.';
+        }
       ]
     }
   },

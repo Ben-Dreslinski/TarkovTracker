@@ -3,7 +3,6 @@
       <v-form ref="form" lazy-validation>
         <v-container>
           <v-row>
-            <!-- First Dropdown -->
             <v-col cols="6">
               <v-autocomplete
                 v-model="firstPlayer"
@@ -14,7 +13,6 @@
               />
             </v-col>
   
-            <!-- Second Dropdown -->
             <v-col cols="6">
               <v-autocomplete
                 v-model="secondPlayer"
@@ -27,7 +25,6 @@
           </v-row>
   
           <v-row>
-            <!-- First PlayerStat Component Wrapped in v-card -->
             <v-col cols="6">
               <v-card v-if="firstPlayer" :key="firstPlayer">
                 <v-card-title class="headline">{{ firstPlayer }}'s Stats</v-card-title>
@@ -40,7 +37,6 @@
               </v-card>
             </v-col>
   
-            <!-- Second PlayerStat Component Wrapped in v-card -->
             <v-col cols="6">
               <v-card v-if="secondPlayer" :key="secondPlayer">
                 <v-card-title class="headline">{{ secondPlayer }}'s Stats</v-card-title>
@@ -86,14 +82,12 @@
         const res = await BaseApi.get<Stats>(`/get_player_stats/${id}`);
         this.firstStats = res.data[0];
         this.updateMaxValues();
-        console.log(`res => ${JSON.stringify(this.firstStats, null, 2)}`);
       },
       secondPlayer: async function (val: string) {
         const id = this.players.find(p => p.name === val)?.id;
         const res = await BaseApi.get<Stats>(`/get_player_stats/${id}`);
         this.secondStats = res.data[0];
         this.updateMaxValues();
-        console.log(`res => ${JSON.stringify(this.secondStats, null, 2)}`);
       }
     },
     methods: {
@@ -104,14 +98,13 @@
         }
       },
       calculateMaxValues(stats1: Stats, stats2: Stats): Stats {
-        // Convert avg_time to number for comparison
         const avgTime1 = parseFloat(stats1.avg_time) || 0;
         const avgTime2 = parseFloat(stats2.avg_time) || 0;
         const maxAvgTime = Math.max(avgTime1, avgTime2);
   
         return {
             id: -1,
-          avg_time: maxAvgTime.toString(), // Convert back to string for display
+          avg_time: maxAvgTime.toString(), 
           avg_xp: Math.max(stats1.avg_xp, stats2.avg_xp),
           avg_healed: Math.max(stats1.avg_healed, stats2.avg_healed),
           avg_dist: Math.max(stats1.avg_dist, stats2.avg_dist),
