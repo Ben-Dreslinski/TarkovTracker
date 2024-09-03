@@ -111,10 +111,10 @@
                           <span :style="{ fontWeight: 'bold', fontSize: '16px', lineHeight: '36px' }">{{ index + 1 }}.</span>
                         </v-col>
                         <v-col cols="11" sm="6">
-                          <v-text-field
+                          <v-text-field class="mt-1"
                             v-model="pmcKills[index]"
                             label="Player Name"
-                            filled
+                            outlined
                             required/>
                         </v-col>
                       </v-row>
