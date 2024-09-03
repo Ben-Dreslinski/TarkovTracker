@@ -223,7 +223,7 @@ export default Vue.extend({
     return {
       valid: true,
       dialogSuccess: false,
-      dialogFailure: true,
+      dialogFailure: false,
       confirmationText: '',
       selectedName: "" as string,
       players: [] as Player[],
