@@ -45,7 +45,7 @@
               <transition name="expand-fade" mode="out-in">
                 <v-text-field v-if="!survived"
                   label="Killer"
-                   
+                  prepend-inner-icon="mdi-emoticon-devil-outline"
                   clearable
                   outlined
                   v-model="killer"
@@ -55,7 +55,7 @@
               <transition name="expand-fade" mode="out-in">
                 <v-autocomplete v-if="!survived"
                   label="Death Limb"
-                   
+                  prepend-inner-icon="mdi-head-outline"
                   required
                   clearable
                   outlined
