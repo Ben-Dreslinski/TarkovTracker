@@ -12,6 +12,7 @@
               <v-autocomplete
                 v-model="selectedName"
                 label="Player"
+                prepend-inner-icon="mdi-account-outline"
                 required
                 clearable
                 outlined
