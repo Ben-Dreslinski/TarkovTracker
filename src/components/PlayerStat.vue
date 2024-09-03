@@ -2,10 +2,12 @@
     <div>
       <v-container>
         <div v-if="stats">
+
           <div :style="getTextFieldStyle('avg_time')">
             <v-text-field
               :value="stats.avg_time"
               label="Average Time"
+              prepend-inner-icon="mdi-clock-outline"
               filled
               readonly
             />
@@ -15,6 +17,7 @@
             <v-text-field
               :value="stats.avg_xp"
               label="Average XP"
+              prepend-inner-icon="mdi-chevron-up-circle-outline"
               filled
               readonly
             />
@@ -24,6 +27,7 @@
             <v-text-field
               :value="stats.avg_healed"
               label="Average Healed"
+              prepend-inner-icon="mdi-needle"
               filled
               readonly
             />
@@ -33,6 +37,7 @@
             <v-text-field
               :value="stats.avg_dist"
               label="Average Distance (km)"
+              prepend-inner-icon="mdi-run"
               filled
               readonly
             />
@@ -42,6 +47,7 @@
             <v-text-field
               :value="stats.avg_acc"
               label="Average Accuracy"
+              prepend-inner-icon="mdi-crosshairs"
               filled
               readonly
             />
@@ -51,6 +57,7 @@
             <v-text-field
               :value="stats.avg_scav"
               label="Average Scav Kills"
+              prepend-inner-icon="mdi-skull-scan-outline"
               filled
               readonly
             />

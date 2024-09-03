@@ -7,8 +7,10 @@
               <v-autocomplete
                 v-model="firstPlayer"
                 label="Player 1"
+                prepend-inner-icon="mdi-account-outline"
                 filled
                 clearable
+                outlined
                 :items="players.map(p => p.name)"
               />
             </v-col>
@@ -17,8 +19,10 @@
               <v-autocomplete
                 v-model="secondPlayer"
                 label="Player 2"
+                prepend-inner-icon="mdi-account-outline"
                 filled
                 clearable
+                outlined
                 :items="players.map(p => p.name)"
               />
             </v-col>

@@ -12,9 +12,9 @@
               <v-autocomplete
                 v-model="selectedName"
                 label="Player"
-                filled
                 required
                 clearable
+                outlined
                 @blur="setCookie()"
                 :rules="[v => !!(v && v.length) || 'Item is required']"
                 :items="playerNames"/>
@@ -22,9 +22,10 @@
               <v-autocomplete
                 v-model="selectedMap"
                 label="Map"
-                filled
+                prepend-inner-icon="mdi-map"
                 required
                 clearable
+                outlined
                 :rules="[v => !!(v && v.length) || 'Item is required']"
                 :items="maps"/>
 
@@ -43,8 +44,9 @@
               <transition name="expand-fade" mode="out-in">
                 <v-text-field v-if="!survived"
                   label="Killer"
-                  filled
+                   
                   clearable
+                  outlined
                   v-model="killer"
                   :rules="stringRules"/>
               </transition>
@@ -52,9 +54,10 @@
               <transition name="expand-fade" mode="out-in">
                 <v-autocomplete v-if="!survived"
                   label="Death Limb"
-                  filled
+                   
                   required
                   clearable
+                  outlined
                   v-model="selectedLimb"
                   :rules="[v => !!(v && v.length) || 'Item is required']"
                   :items="deathLimbs"/>
@@ -63,16 +66,18 @@
               <v-text-field
                 v-model="time"
                 label="Time (MM:SS)"
-                filled
+                prepend-inner-icon="mdi-clock-outline"
                 required
                 clearable
+                outlined
                 :rules="timeRules"/>
 
               <v-text-field
                 label="Experience"
-                filled
+                prepend-inner-icon="mdi-chevron-up-circle-outline"
                 required
                 clearable
+                outlined
                 v-model="xp"
                 :rules="numberRules"/>
 
@@ -109,7 +114,6 @@
                             v-model="pmcKills[index]"
                             label="Player Name"
                             filled
-                            dense
                             required/>
                         </v-col>
                       </v-row>
@@ -120,40 +124,47 @@
 
               <v-text-field
                 label="Scav Kills"
-                filled
+                prepend-inner-icon="mdi-skull-scan-outline"
                 required
                 clearable
+                outlined
                 v-model="scavKills"
                 :rules="numberRules"/>
 
               <v-text-field
                 label="Amount Healed"
-                filled
+                prepend-inner-icon="mdi-needle"
                 clearable
-                placeholder="Blank if none"
+                hint="Optional - blank if none"
+                persistent-hint
+                outlined
                 v-model="amountHealed"
                 :rules="optionalNumberRules"/>
 
               <v-text-field
                 label="Distance traveled"
-                filled
+                prepend-inner-icon="mdi-run"
                 required
                 clearable
+                outlined
                 v-model="kmTraveled"
                 :rules="numberRules"/>
 
               <v-text-field
                 label="Accuracy"
-                filled
+                prepend-inner-icon="mdi-crosshairs"
                 clearable
-                placeholder="Blank if none"
+                hint="Optional - blank if none"
+                persistent-hint
+                outlined
                 v-model="accuracy"
                 :rules="accuracyRules"/>
 
               <v-text-field
                 label="Any Other Notes"
-                filled
+                prepend-inner-icon="mdi-pencil-outline"
                 clearable
+                outlined
                 v-model="notes"
                 :rules="optionalStringRules"/>
 
