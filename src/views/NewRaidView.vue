@@ -132,7 +132,7 @@
                 v-model="scavKills"
                 :rules="numberRules"/>
 
-              <v-text-field
+              <v-text-field class="mb-3"
                 label="Amount Healed"
                 prepend-inner-icon="mdi-needle"
                 clearable
@@ -151,7 +151,7 @@
                 v-model="kmTraveled"
                 :rules="numberRules"/>
 
-              <v-text-field
+              <v-text-field class="mb-3"
                 label="Accuracy"
                 prepend-inner-icon="mdi-crosshairs"
                 clearable
