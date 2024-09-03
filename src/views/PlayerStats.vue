@@ -107,7 +107,8 @@
         const maxAvgTime = Math.max(avgTime1, avgTime2);
   
         return {
-            id: -1,
+          id: -1,
+          raid_count: Math.max(stats1.raid_count, stats2.raid_count),
           avg_time: maxAvgTime.toString(), 
           avg_xp: Math.max(stats1.avg_xp, stats2.avg_xp),
           avg_healed: Math.max(stats1.avg_healed, stats2.avg_healed),

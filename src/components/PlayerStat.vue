@@ -3,6 +3,16 @@
       <v-container>
         <div v-if="stats">
 
+          <div :style="getTextFieldStyle('raid_count')">
+            <v-text-field
+              :value="stats.raid_count"
+              label="Raid Count"
+              prepend-inner-icon="mdi-exit-run"
+              filled
+              readonly
+            />
+          </div>
+
           <div :style="getTextFieldStyle('avg_time')">
             <v-text-field
               :value="stats.avg_time"
@@ -85,7 +95,6 @@
     },
     methods: {
       getTextFieldStyle(statName: keyof Stats) {
-        console.log(`statName: ${statName}`);
         if (this.stats && this.maxValues) {
           const value = this.stats[statName as keyof Stats];
           const max = this.maxValues[statName as keyof Stats];
@@ -95,12 +104,10 @@
   
           let numValue;
           let numMax;
-          console.log(`stat: ${value}, type: ${typeof(value)}`);
+
           if (typeof value === 'string') {
             numValue = parseFloat(value);
             numMax = parseFloat(max as string);
-  
-            console.log(`Stat Name: ${statName}, Value: ${numValue}, Max: ${numMax}`);
           }
           else
           {

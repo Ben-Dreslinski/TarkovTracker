@@ -5,6 +5,7 @@ export interface Player {
 
 export interface Stats {
     id: number;
+    raid_count: number;
     avg_time: string;
     avg_xp: number;
     avg_healed: number;
