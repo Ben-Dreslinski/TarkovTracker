@@ -25,7 +25,7 @@
   import RouteCard from '@/components/RouteCard.vue';
 
   export default Vue.extend({
-    name: 'HelloWorld',
+    name: 'HomeCards',
     components: {
       RouteCard
     },
