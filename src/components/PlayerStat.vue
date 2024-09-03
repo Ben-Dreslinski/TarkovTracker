@@ -19,6 +19,15 @@
               readonly
             />
           </div>
+
+          <div :style="getTextFieldStyle('avg_healed')">
+            <v-text-field
+              :value="stats.avg_healed"
+              label="Average Healed"
+              filled
+              readonly
+            />
+          </div>
   
           <div :style="getTextFieldStyle('avg_dist')">
             <v-text-field

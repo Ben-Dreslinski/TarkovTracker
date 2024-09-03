@@ -2,7 +2,7 @@
     <v-hover v-slot:default="{ isHovering }">
       <v-card
         :elevation="isHovering ? 400 : 4"
-        class="home-card"
+        class="home-card mb-5"
       >
         <v-img
           :src="require(`@/assets/${image}`)"
