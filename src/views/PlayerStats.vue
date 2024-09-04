@@ -84,13 +84,13 @@
       firstPlayer: async function (val: string) {
         const id = this.players.find(p => p.name === val)?.id;
         const res = await BaseApi.get<Stats>(`/get_player_stats/${id}`);
-        this.firstStats = res.data[0];
+        this.firstStats = res.data;
         this.updateMaxValues();
       },
       secondPlayer: async function (val: string) {
         const id = this.players.find(p => p.name === val)?.id;
         const res = await BaseApi.get<Stats>(`/get_player_stats/${id}`);
-        this.secondStats = res.data[0];
+        this.secondStats = res.data;
         this.updateMaxValues();
       }
     },
@@ -108,6 +108,7 @@
   
         return {
           id: -1,
+          pmc_kills: Math.max(stats1.pmc_kills, stats2.pmc_kills),
           raid_count: Math.max(stats1.raid_count, stats2.raid_count),
           avg_time: maxAvgTime.toString(), 
           avg_xp: Math.max(stats1.avg_xp, stats2.avg_xp),

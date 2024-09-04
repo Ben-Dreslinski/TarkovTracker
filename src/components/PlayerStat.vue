@@ -13,6 +13,16 @@
             />
           </div>
 
+          <div :style="getTextFieldStyle('pmc_kills')">
+            <v-text-field
+              :value="stats.pmc_kills"
+              label="PMC Kills"
+              prepend-inner-icon="mdi-tag-outline"
+              filled
+              readonly
+            />
+          </div>
+
           <div :style="getTextFieldStyle('avg_time')">
             <v-text-field
               :value="stats.avg_time"
