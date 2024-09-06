@@ -15,6 +15,13 @@
             title="Player Stats"
           />
         </router-link>
+
+        <router-link :to="{ name: 'dini' }">
+          <RouteCard
+            image="gambabert.gif"
+            title="Dini Playground"
+          />
+        </router-link>
       </v-col>
     </v-row>
   </v-container>

@@ -21,6 +21,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('../views/PlayerStats.vue')
   },
   {
+    path: '/dini',
+    name: 'dini',
+    component: () => import('../views/DiniPlayground.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
